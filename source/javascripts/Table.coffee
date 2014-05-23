@@ -13,11 +13,11 @@ app = angular.module('app', [])
 app.controller('SortTableCtrl', 
   SortTableCtrl = ($scope) ->
     console.log "controller"
-    $scope.head = Object.keys(json[0])
+    $scope.head = Object.keys(json[0]).sort()
     console.log $scope.head
     $scope.data = json
-      
-    $scope.predicate = 'Name'
+    console.log $scope.data  
+    $scope.predicate = ''
 
     $scope.search = (value) ->
       rows = document.querySelectorAll('tr.ng-scope')
