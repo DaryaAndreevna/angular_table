@@ -1,0 +1,19 @@
+---
+title: Table
+---
+
+<section ng-app="app" ng-controller="SortTableCtrl">
+  <input type="text" ng-model="textOfSearch" ng-change="search(textOfSearch)"> </input>
+  <table ng-model='mainTable'>
+    <thead>
+      <tr>
+        <th ng-repeat="item in head"><a href="" ng-click="$parent.predicate=item; $parent.reverse=!$parent.reverse" >{{item}}</a></th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in data | orderBy:predicate:reverse" >
+        <td ng-repeat="(key,value) in item" >{{value}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
