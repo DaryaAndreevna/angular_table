@@ -15,7 +15,6 @@ app.factory('Data',
 app.controller('SortTableCtrl', 
   SortTableCtrl = ($scope) ->
     console.log "controller"
-    #console.log $scope.head
     $scope.data = Data()
     $scope.head = Object.keys($scope.data[0]).sort()
     console.log [$scope.data, $scope.head]  
