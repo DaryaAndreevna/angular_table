@@ -3,7 +3,7 @@ title: Table
 ---
 
 <section ng-app="app" ng-controller="SortTableCtrl">
-  <input type="text" ng-model="textOfSearch" ng-change="search(textOfSearch)"> </input>
+  <input type="text" ng-model="SearchText"> </input>
   <table ng-model='mainTable'>
     <thead>
       <tr>
@@ -11,7 +11,7 @@ title: Table
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="item in data | orderBy:predicate:reverse" >
+      <tr ng-repeat="item in data | orderBy:predicate:reverse | filter:SearchText" >
         <td ng-repeat="(key,value) in item" >{{value}}</td>
       </tr>
     </tbody>
