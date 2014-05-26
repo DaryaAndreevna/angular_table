@@ -1,34 +1,22 @@
 //= require angular
 
-
-json = [
-    {id:1,name:"Valik",age:23, adult:true}
-    {id:3,name:"Rinat",age:22, adult:false}
-    {id:4,name:"Masha",age:20, adult:false}
-    {id:2,name:"Dasha",age:21, adult:true}
-  ]
-
 app = angular.module('app', [])
 
+app.factory('Data', 
+  Data =  () ->
+    Data = {}
+    console.log "in Data"
+    Data.items = [
+      {id:1,name:"Valik",age:23, adult:true}
+      {id:3,name:"Rinat",age:22, adult:false}
+      {id:4,name:"Masha",age:20, adult:false}
+      {id:2,name:"Dasha",age:21, adult:true}
+      ] )
 app.controller('SortTableCtrl', 
   SortTableCtrl = ($scope) ->
     console.log "controller"
-    $scope.head = Object.keys(json[0]).sort()
-    console.log $scope.head
-    $scope.data = json
-    console.log $scope.data  
-    $scope.predicate = ''
-
-    $scope.search = (value) ->
-      rows = document.querySelectorAll('tr.ng-scope')
-      for row in rows
-        cells = row.children
-        for cell in cells
-          str = cell.innerHTML
-          console.log str
-          if  str.indexOf(value) >= 0
-            row.style.display = ''
-            console.log "win"
-            break
-          row.style.display = 'none'
-   )
+    #console.log $scope.head
+    $scope.data = Data()
+    $scope.head = Object.keys($scope.data[0]).sort()
+    console.log [$scope.data, $scope.head]  
+    $scope.predicate = '' )
